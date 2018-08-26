@@ -3,25 +3,25 @@
 #include "textures.inc"
 #declare Move = 1.5*clock;
 
-camera 
+camera
 {
     location <0, 5 + Move, -15>
-    look_at <0, 5+ Move, 0>
+    look_at <0, 5 + Move, 0>
 }
 
 light_source
 {
     <0,5,-7>
-    colour White
-}                   
+    colour Whit
+}
 
 //floor
-plane 
+plane
 {
     <0, 1, 0>, 0
     texture
     {
-        pigment    
+        pigment
         {
             White_Marble
             scale 4
@@ -31,31 +31,31 @@ plane
     translate<0, -3, 0>
 }
 //wall back
-plane                                                            
+plane
 {
-    <0, 0, 1>, 1  
+    <0, 0, 1>, 1
     pigment {DarkTan}
     normal {bumps 0.3 scale 0.2}
     translate<0, 0, 4>
-} 
+}
 
 //wall right
-plane                                                            
+plane
 {
-    <1, 0, 0>, 1  
+    <1, 0, 0>, 1
     pigment {SummerSky}
     normal {bumps 0.3 scale 0.2}
     translate<8, 0, 0>
 }
 
 //wall left
-plane                                                            
+plane
 {
-    <-1, 0, 0>, 1  
+    <-1, 0, 0>, 1
     pigment {SummerSky}
     normal {bumps 0.3 scale 0.2}
     translate<-8, 0, 0>
-}  
+}
 
 //table leg
 cylinder
@@ -79,19 +79,19 @@ box
 {
     <-5,2,-3>
     <5,2.5,3>
-    texture          
+    texture
     {
         DMFWood4
         scale 4
     }
-    
+
 }
 //laptop bottom
 box
 {
     <-1.5,2.5,-1>
     <1.5,2.6,1>
-    pigment {Black}  
+    pigment {Black}
     finish {Shiny}
     translate <0,0,-1.5 >
 }
@@ -103,18 +103,18 @@ box
     pigment {Black}
     finish {Shiny}
     rotate x*110
-    translate <0,4.4,-2.52 >  
-}    
+    translate <0,4.4,-2.52 >
+}
 
 //screen
 box
 {
     <-1.5, 2.5, -1>
-    <1.5, 2.6, 1> 
+    <1.5, 2.6, 1>
     texture
-    {  
+    {
         uv_mapping
-        pigment 
+        pigment
         {
             image_map
             {
@@ -122,11 +122,11 @@ box
             }
             scale <0.25,0.35,0.25>
             rotate<180,0,0>
-        } 
+        }
     }
     rotate x*110
     translate <0,5.1,-2.55>
-    scale <0.95,0.85,0.85> 
+    scale <0.95,0.85,0.85>
 }
 
 //lamp left
@@ -134,10 +134,10 @@ cone
 {
     < -7, -3, 3> 1
     < -7, -2, 3> 0.1
-    texture 
-    {   
+    texture
+    {
         pigment{Black}
-        finish {diffuse 0.9 phong 1.0} 
+        finish {diffuse 0.9 phong 1.0}
         scale 4
     }
 }
@@ -153,16 +153,16 @@ cylinder
         scale 4
     }
 }
- 
- 
+
+
 sphere
-{                 
+{
     < -7, 7, 3> 1
-    texture 
+    texture
     {
-        Silver_Metal 
+        Silver_Metal
         scale 4
-    } 
+    }
 }
 
 //lamp right
@@ -170,10 +170,10 @@ cone
 {
     < 7, -3, 3> 1
     < 7, -2, 3> 0.1
-    texture 
+    texture
     {
         pigment{Black}
-        finish {diffuse 0.9 phong 1.0} 
+        finish {diffuse 0.9 phong 1.0}
         scale 4
     }
 }
@@ -189,16 +189,16 @@ cylinder
         scale 4
     }
 }
- 
- 
+
+
 sphere
-{                 
+{
     < 7, 7, 3> 1
-    texture 
+    texture
     {
-        Silver_Metal 
+        Silver_Metal
         scale 4
-    } 
+    }
 }
 
 //tv
@@ -208,21 +208,21 @@ box
     <-4, 10, 4>
     texture
     {
-        pigment {Black}  
+        pigment {Black}
         finish {diffuse 0.9 phong 1.0}
         scale 2
     }
-     
-}   
- 
+
+}
+
 box
 {
     <4, 5, 3.5>
     <-4, 10, 4>
     texture
-    {  
+    {
         uv_mapping
-        pigment 
+        pigment
         {
             image_map
             {
@@ -230,27 +230,8 @@ box
             }
             scale <0.25,0.334,0.25>
             rotate<0,180,0>
-        } 
+        }
     }
     translate <0,1.35,0.6>
-    scale <0.95,0.85,0.85>     
+    scale <0.95,0.85,0.85>
 }
-
-                               
-
-
-
-
-
-    
-
-
-    
-
-
-
-
-
-
-
-
