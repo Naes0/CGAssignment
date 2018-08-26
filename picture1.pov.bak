@@ -1,0 +1,136 @@
+#include "colors.inc"
+#include "shapes.inc"
+#include "textures.inc"
+ 
+camera 
+{
+    location <0, 5, -15>
+    look_at <0, 3, 0>
+}                   
+
+light_source{<2, 4, -7> color White}
+
+//floor
+plane 
+{
+    <0, 1, 0>, 0
+    texture
+    {
+        pigment    
+        {
+            White_Marble
+            scale 4
+        }
+        finish {Shiny}
+    }
+    translate<0, -3, 0>
+}
+//wall back
+plane                                                            
+{
+    <0, 0, 1>, 1  
+    pigment {White}
+    normal {bumps 0.3 scale 0.2}
+    translate<0, 0, 3>
+} 
+
+//wall right
+plane                                                            
+{
+    <1, 0, 0>, 1  
+    pigment {White}
+    normal {bumps 0.3 scale 0.2}
+    translate<7, 0, 0>
+}
+
+//wall left
+plane                                                            
+{
+    <-1, 0, 0>, 1  
+    pigment {White}
+    normal {bumps 0.3 scale 0.2}
+    translate<-7, 0, 0>
+}  
+
+//table leg
+cylinder
+{
+    <3,-3,-1>
+    <3,2,0>
+    0.5
+    texture { DMFWood4 scale 4 }
+}
+//table leg
+cylinder
+{
+    <-3,-3,-1>
+    <-3,2,0>
+    0.5
+    texture { DMFWood4 scale 4 }
+}
+
+//table top
+box
+{
+    <-5,2,-3>
+    <5,2.5,3>
+    texture          
+    {
+        DMFWood4
+        scale 4
+    }
+    
+}
+
+box
+{
+    <-1.5,2.5,-1>
+    <1.5,2.6,1>
+    pigment {Black}
+    translate <0,0,-1.5 >
+}
+
+box
+{
+    <-1.5,2.5,-1>
+    <1.5,2.6,1>
+    pigment {Black}
+    rotate x*110
+    translate <0,4.4,-2.52 >  
+}    
+
+//screen
+box
+{
+    <-1.5,2.5,-1>
+    <1.5,2.6,1> 
+    texture
+    {  
+        uv_mapping
+        pigment 
+        {
+            image_map
+            {
+                png "winupdate.png"
+            }
+            scale <0.25,0.35,0.25>
+            rotate<180,0,0>
+        } 
+    }
+    rotate x*110
+    translate <0,5.1,-2.55>
+    scale <0.95,0.85,0.85> 
+}
+
+    
+
+
+    
+
+
+
+
+
+
+
+
