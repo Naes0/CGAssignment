@@ -4,7 +4,7 @@ Antialias=Off
 Antialias_Threshold=0.1
 Antialias_Depth=2
 
-Input_File_Name="sphere.pov"
+Input_File_Name="picture1.pov"
 
 Initial_Frame=1
 Final_Frame=30

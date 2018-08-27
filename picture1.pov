@@ -1,18 +1,18 @@
 #include "colors.inc"
 #include "shapes.inc"
 #include "textures.inc"
-#declare Move = 1.5*clock;
+#declare YMove = 0.15*clock;
+#declare ZMove = 7.5*clock;
 
 camera
 {
-    location <0, 5 + Move, -15>
-    look_at <0, 5 + Move, 0>
-}
+    location <0, 5, -15>
+    look_at <0, 5, 5>
 
-light_source
-{
-    <0,5,-7>
-    colour Whit
+    #if( clock <= 15 )
+        location <0, 5 + YMove, -15 + ZMove/9>
+        look_at <0, 5 + YMove, 5 + ZMove/9>
+    #end
 }
 
 //floor
@@ -30,13 +30,22 @@ plane
     }
     translate<0, -3, 0>
 }
+
 //wall back
 plane
 {
     <0, 0, 1>, 1
-    pigment {DarkTan}
-    normal {bumps 0.3 scale 0.2}
+    pigment {checker color Black color White}
+    //normal {bumps 0.3 scale 0.2}
     translate<0, 0, 4>
+}
+
+//wall backback
+plane
+{
+    <0, 0, 1>, 1
+    pigment {White}
+    translate<0, 0, 20>
 }
 
 //wall right
@@ -132,8 +141,8 @@ box
 //lamp left
 cone
 {
-    < -7, -3, 3> 1
-    < -7, -2, 3> 0.1
+    < -7, -3, 1> 1
+    < -7, -2, 1> 0.1
     texture
     {
         pigment{Black}
@@ -144,8 +153,8 @@ cone
 
 cylinder
 {
-    <-7, -2, 3>
-    <-7, 7, 3>
+    <-7, -2, 1>
+    <-7, 7, 1>
     0.1
     texture
     {
@@ -154,22 +163,31 @@ cylinder
     }
 }
 
-
-sphere
+light_source
 {
-    < -7, 7, 3> 1
-    texture
+    <-7,8,1> colour rgb <1,1,1>
+    spotlight
+    point_at<0, 6, 5>
+    radius 90
+    tightness 5
+    looks_like
     {
-        Silver_Metal
-        scale 4
+        sphere
+        { <0,0,0>,1
+          texture { Glass }
+          finish { ambient 0.7 }
+        }
     }
+
 }
+
+
 
 //lamp right
 cone
 {
-    < 7, -3, 3> 1
-    < 7, -2, 3> 0.1
+    < 7, -3, 1> 1
+    < 7, -2, 1> 0.1
     texture
     {
         pigment{Black}
@@ -180,8 +198,8 @@ cone
 
 cylinder
 {
-    <7, -2, 3>
-    <7, 7, 3>
+    <7, -2, 1>
+    <7, 7, 1>
     0.1
     texture
     {
@@ -190,16 +208,24 @@ cylinder
     }
 }
 
-
-sphere
+light_source
 {
-    < 7, 7, 3> 1
-    texture
+    <7,8,1> colour rgb <1,1,1>
+    spotlight
+    point_at<0, 6, 5>
+    radius 90
+    tightness 5
+    looks_like
     {
-        Silver_Metal
-        scale 4
+        sphere
+        {
+            <0,0,0>,1
+            texture { Glass }
+            finish { ambient 0.7 }
+        }
     }
 }
+
 
 //tv
 box
@@ -234,4 +260,13 @@ box
     }
     translate <0,1.35,0.6>
     scale <0.95,0.85,0.85>
+}
+
+light_source
+{
+    <0,8,-10> colour rgb <1,1,1>
+    spotlight
+    point_at<0, 5, -3>
+    radius 40
+    tightness 5
 }
