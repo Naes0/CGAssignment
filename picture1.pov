@@ -1,6 +1,7 @@
 #include "colors.inc"
 #include "shapes.inc"
 #include "textures.inc"
+#include "transforms.inc"
 
 camera
 {   
@@ -21,12 +22,17 @@ camera
             look_at <0, 0, 5>
         #end
         #if (clock >= 60)
-            location <-6, 3, -10>
-            look_at <-8, 3, -10>
+            location <0, 7, 6>
+            look_at <0, 7, 10>
         #end
-           
+}  
 
+light_source
+{
+    <0,10,8> colour rgb <1,1,1> 
+    shadowless
 }
+
 
 //floor
 plane
@@ -56,7 +62,7 @@ plane
 //wall backback
 plane
 {
-    <0, 0, 1>, 1
+    <0, 0, 1>, 5
     pigment {White}
     translate<0, 0, 20>
 }
@@ -282,6 +288,27 @@ light_source
     point_at<0, 5, -3>
     radius 40
     tightness 5
+}
+
+
+text 
+{
+    ttf "timrom.ttf" "if(user.isDoingStuff() && user.hasUnsavedWork())" 0, 0
+    pigment { Black } 
+    scale 0.5
+    translate <-5,7,17> 
+    Rotate_Around_Trans(<0,20*clock,0>, <0,7,17>)  
+}
+
+
+
+text
+{
+    ttf "timrom.ttf" "{ update(); }" 0, 0
+    pigment { Black } 
+    scale 0.5
+    translate <-1,6,17> 
+    Rotate_Around_Trans(<0,20*clock,0>, <0,6,17>)
 }
 
 background {colour White}
