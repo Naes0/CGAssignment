@@ -5,34 +5,31 @@
 
 camera
 {   
-        #if( clock < 15 )
+        #if( clock < 15 )//Zoom in
             location <0, 5 + 0.18*clock, -15 + 0.83*clock>
             look_at <0, 5 + 0.18*clock, 5>
         #end
-        #if (clock >= 15)
-            location <0, 7.52, -3.8 - 0.25*(clock-15)>
+        #if(clock >=15 & clock<20)
+            location <0, 7.52, -2.55>
+            look_at <0, 7.52, 5>
+        #end
+        #if (clock >= 20)//Zoom out
+            location <0, 7.52, -2.55 - 0.25*(clock-20)>
             look_at <0, 7.52, 5>       
         #end
-        #if (clock >= 30)
-            location <0, 7.52, -7.55>
-            look_at <0, 7.52 - 0.5*(clock-30), 5>
+        #if (clock >= 35)//Tilt down
+            location <0, 7.52, -6.3>
+            look_at <0, 7.52 - 0.5*(clock-35), 5>
         #end
-        #if (clock >= 45)
-            location <0, 7.52 - 0.25*(clock-45), -7.55 + 0.5*(clock-45)>
+        #if (clock >= 50)//Zoom into Windows update
+            location <0, 7.52 - 0.3*(clock-50), -6.3 + 0.5*(clock-50)>
             look_at <0, 0, 5>
         #end
-        #if (clock >= 60)
+        #if (clock >= 62)//inside windows update
             location <0, 7, 6>
             look_at <0, 7, 10>
         #end
 }  
-
-light_source
-{
-    <0,10,8> colour rgb <1,1,1> 
-    shadowless
-}
-
 
 //floor
 plane
@@ -64,7 +61,7 @@ plane
 {
     <0, 0, 1>, 5
     pigment {White}
-    translate<0, 0, 20>
+    translate<0, 0, 14>
 }
 
 //wall right
@@ -293,22 +290,93 @@ light_source
 
 text 
 {
-    ttf "timrom.ttf" "if(user.isDoingStuff() && user.hasUnsavedWork())" 0, 0
-    pigment { Black } 
+    ttf "arial.ttf" "if(user.isDoingStuff() && user.hasUnsavedWork())" 0, 0
+    pigment { Black }
+    finish{ ambient 1 }
     scale 0.5
-    translate <-5,7,17> 
-    Rotate_Around_Trans(<0,20*clock,0>, <0,7,17>)  
+    translate <-5,7,17>
+    //translate<-5,7+1*sin((clock*0.25)*2*pi),17> 
+    //Rotate_Around_Trans(<0,10*clock,0>, <0,7,17>)  
 }
 
 
 
 text
 {
-    ttf "timrom.ttf" "{ update(); }" 0, 0
-    pigment { Black } 
+    ttf "arial.ttf" "{ update(); }" 0, 0
+    pigment { Black }
+    finish{ ambient 1 } 
     scale 0.5
     translate <-1,6,17> 
-    Rotate_Around_Trans(<0,20*clock,0>, <0,6,17>)
+    //translate<-5,7+1*sin(clock)*2*pi,17> 
+} 
+
+light_source
+{
+    <4,6.5,17> colour Green
+    fade_distance 1.5
+    fade_power 2
+    shadowless
+    looks_like
+    {
+        sphere
+        { <0,0,0>,0.5
+          texture { Glass }
+          finish { ambient 0.7 }
+        }
+    }
+    Axis_Rotate_Trans(<0,6.5,17>,10*clock)
+}
+
+light_source
+{
+    <-4,6.5,17> colour Blue
+    fade_distance 1.5
+    fade_power 2
+    shadowless
+    looks_like
+    {
+        sphere
+        { <0,0,0>,0.5
+          texture { Glass }
+          finish { ambient 0.7 }
+        }
+    }
+    Axis_Rotate_Trans(<0,6.5,17>,10*clock)
+}
+
+light_source
+{
+    <0,9,17> colour Red
+    fade_distance 1.5
+    fade_power 2
+    shadowless
+    looks_like
+    {
+        sphere
+        { <0,0,0>,0.5
+          texture { Glass }
+          finish { ambient 0.7 }
+        }
+    }
+    Axis_Rotate_Trans(<0,6.5,17>,10*clock)
+}  
+
+light_source
+{
+    <0,4,17> colour Yellow
+    fade_distance 1.5
+    fade_power 2
+    shadowless
+    looks_like
+    {
+        sphere
+        { <0,0,0>,0.5
+          texture { Glass }
+          finish { ambient 0.7 }
+        }
+    }
+    Axis_Rotate_Trans(<0,6.5,17>,10*clock)
 }
 
 background {colour White}
