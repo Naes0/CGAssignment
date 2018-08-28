@@ -1,18 +1,31 @@
 #include "colors.inc"
 #include "shapes.inc"
 #include "textures.inc"
-#declare YMove = 0.15*clock;
-#declare ZMove = 7.5*clock;
 
 camera
-{
-    location <0, 5, -15>
-    look_at <0, 5, 5>
+{   
+        #if( clock < 15 )
+            location <0, 5 + 0.18*clock, -15 + 0.83*clock>
+            look_at <0, 5 + 0.18*clock, 5>
+        #end
+        #if (clock >= 15)
+            location <0, 7.52, -3.8 - 0.25*(clock-15)>
+            look_at <0, 7.52, 5>       
+        #end
+        #if (clock >= 30)
+            location <0, 7.52, -7.55>
+            look_at <0, 7.52 - 0.5*(clock-30), 5>
+        #end
+        #if (clock >= 45)
+            location <0, 7.52 - 0.25*(clock-45), -7.55 + 0.5*(clock-45)>
+            look_at <0, 0, 5>
+        #end
+        #if (clock >= 60)
+            location <-6, 3, -10>
+            look_at <-8, 3, -10>
+        #end
+           
 
-    #if( clock <= 15 )
-        location <0, 5 + YMove, -15 + ZMove/9>
-        look_at <0, 5 + YMove, 5 + ZMove/9>
-    #end
 }
 
 //floor
@@ -270,3 +283,5 @@ light_source
     radius 40
     tightness 5
 }
+
+background {colour White}
