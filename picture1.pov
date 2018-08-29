@@ -9,23 +9,23 @@ camera
             location <0, 5 + 0.18*clock, -15 + 0.83*clock>
             look_at <0, 5 + 0.18*clock, 5>
         #end
-        #if(clock >=15 & clock<20)
+        #if(clock >=15 & clock<30)
             location <0, 7.52, -2.55>
             look_at <0, 7.52, 5>
         #end
-        #if (clock >= 20)//Zoom out
-            location <0, 7.52, -2.55 - 0.25*(clock-20)>
+        #if (clock >= 30)//Zoom out
+            location <0, 7.52, -2.55 - 0.25*(clock-30)>
             look_at <0, 7.52, 5>       
         #end
-        #if (clock >= 35)//Tilt down
+        #if (clock >= 45)//Tilt down
             location <0, 7.52, -6.3>
-            look_at <0, 7.52 - 0.5*(clock-35), 5>
+            look_at <0, 7.52 - 0.5*(clock-45), 5>
         #end
-        #if (clock >= 50)//Zoom into Windows update
-            location <0, 7.52 - 0.3*(clock-50), -6.3 + 0.5*(clock-50)>
+        #if (clock >= 60)//Zoom into Windows update
+            location <0, 7.52 - 0.3*(clock-60), -6.3 + 0.5*(clock-60)>
             look_at <0, 0, 5>
         #end
-        #if (clock >= 62)//inside windows update
+        #if (clock >= 73)//inside windows update
             location <0, 7, 6>
             look_at <0, 7, 10>
         #end
@@ -290,25 +290,25 @@ light_source
 
 text 
 {
-    ttf "arial.ttf" "if(user.isDoingStuff() && user.hasUnsavedWork())" 0, 0
+    ttf "arial.ttf" "if(user.isDoingStuff() && user.hasUnsavedWork())" 0.1, 0
     pigment { Black }
-    finish{ ambient 1 }
+    finish{ Shiny }
     scale 0.5
     translate <-5,7,17>
     //translate<-5,7+1*sin((clock*0.25)*2*pi),17> 
-    //Rotate_Around_Trans(<0,10*clock,0>, <0,7,17>)  
+    Rotate_Around_Trans(<0,10*clock,0>, <0,7,17>)     
 }
 
 
 
 text
 {
-    ttf "arial.ttf" "{ update(); }" 0, 0
+    ttf "arial.ttf" "{ update(); }" 0.1, 0
     pigment { Black }
-    finish{ ambient 1 } 
+    finish{ Shiny } 
     scale 0.5
     translate <-1,6,17> 
-    //translate<-5,7+1*sin(clock)*2*pi,17> 
+    Rotate_Around_Trans(<0,10*clock,0>, <0,6,17>)  
 } 
 
 light_source
